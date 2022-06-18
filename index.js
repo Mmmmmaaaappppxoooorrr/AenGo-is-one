@@ -17,32 +17,6 @@ const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, `\\$&`);
 
 //this fires when the BOT STARTS DO NOT 
 
-client.on('message', async abdo => {
-    if (abdo.content.startsWith(PREFIX + "cd")) {
-    if (!abdo.member.hasPermission('MANAGE_CHANNELS')) return abdo.channel.send('**تۆ ناتوانی ئەم کردارە بکەیت واز بێرە سەرمان مەیەشێنە 😗**');
-     abdo.channel.send('**تـۆ دڵـنـیـای بـۆ سـڕیـنـەوەی ئـەم چـەنـاڵـە تـەنـهـا بـەڕیـاکـشـن جـوابـم دەوە؟**').then(msg => {
-       msg.react('✅');
-       msg.react('❎');
-		  const yesC = (reaction, user) =>
-					reaction.emoji.name === '✅' && user.id === abdo.author.id;
-			const noC = (reaction, user) =>
-					reaction.emoji.name === '❎' && user.id === abdo.author.id;
-      const yes = msg.createReactionCollector(yesC, {
-        time: 20000
-      });
-			const no = msg.createReactionCollector(noC, {
-			  time: 20000
-			});
-			yes.on('collect', y => {
-			  abdo.channel.delete();
-			});
-			no.on('collect', n => {
-			  msg.delete();
-			});
-     });
-}
-});
-
 client.on(`ready`, () => {
 
 //////////////
