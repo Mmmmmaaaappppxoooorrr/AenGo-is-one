@@ -17,36 +17,6 @@ const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, `\\$&`);
 
 //this fires when the BOT STARTS DO NOT TOUCH
 
-client.on("message", message => {
-  if (message.content.startsWith(PREFIX + "boy gif")) {
-    let man = [
-      "https://media.discordapp.net/attachments/746824654840135761/986939721844404224/a_90a76bee99aed6ad00e91f52d85dacba.gif",
-      "https://media.discordapp.net/attachments/746824654840135761/987091646833393704/a_36e2a875a15b56777fe4ea95ba739a99.gif",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-    ];
-
-    message.channel
-      .send({
-        embed: {
-          description: `${message.author.username} MAN GIFS photos  `,
-          image: {
-            url: man[Math.floor(Math.random() * man.length)]
-          }
-        }
-      })
-      .catch(e => {
-        client.log.error(e);
-      });
-  }
-}); 
-
 client.on(`ready`, () => {
 
 //////////////
