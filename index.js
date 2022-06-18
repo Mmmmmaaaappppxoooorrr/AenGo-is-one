@@ -18,7 +18,7 @@ const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, `\\$&`);
 //this fires when the BOT STARTS DO NOT TOUCH
 
 client.on("messageCreate", message => {
-if (message.content.startsWith(prefix + 'addemoji')) {
+if (message.content.startsWith(PREFIX + 'addemoji')) {
 let args = message.content.split(' ')
 
 if (!message.member.permissions.has("MANAGE_EMOJIS")) {
