@@ -6,7 +6,7 @@ const db = require('quick.db');
 const { TOKEN, PREFIX, AVATARURL, BOTNAME, } = require(`./config.json`);
 const figlet = require("figlet");
 const client = new Client({ disableMentions: `` , partials: ['MESSAGE', 'CHANNEL', 'REACTION'] });
-client.login('Nzg0MzAzNzU2OTI1NDY4NzEz.X8nVyw.eSrDPfzRnwffCXIT3UbiV_DQKTc');
+client.login('OTE2Nzc2NDgzMzY2NzcyNzU2.GO_gme.BNCOUx4r6kK8HRvEzf_idXLpR0hzQjv5MR55DM');
 client.commands = new Collection();
 client.setMaxListeners(0);
 client.prefix = PREFIX;
@@ -22,7 +22,8 @@ client.on("message", message => {
     let man = [
       "https://media.discordapp.net/attachments/786897044483604490/803870769313480714/Enes_Acar_GIF_70.gif",
       "https://media.discordapp.net/attachments/786897044483604490/803870793716858880/a_57a7f6c875e3a329b170edf177392911.gif",
-      "https://media.discordapp.net/attachments/786897044483604490/803870817351368734/5-2.gif",
+      "https://media.discordapp.net/attachments
+/786897044483604490/803870817351368734/5-2.gif",
       "https://media.discordapp.net/attachments/786897044483604490/804007829010513966/image1.gif",
       "https://media.discordapp.net/attachments/786897044483604490/804007829483552838/image3.gif",
       "https://media.discordapp.net/attachments/786897044483604490/804219672513478706/Lenora_36.gif",
