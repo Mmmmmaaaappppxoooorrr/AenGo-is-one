@@ -17,6 +17,43 @@ const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, `\\$&`);
 
 //this fires when the BOT STARTS DO NOT TOUCH
 
+client.on("messageCreate", message => {
+if (message.content.startsWith(prefix + 'addemoji')) {
+let args = message.content.split(' ')
+
+if (!message.member.permissions.has("MANAGE_EMOJIS")) {
+  return message.reply("** 😕 You don't have permissions **"); 
+}
+if(!message.guild.me.permissions.has('MANAGE_EMOJIS')) {
+  return message.reply(`** 😕 I couldn't edit the channel permissions. Please check my permissions and role position. **`);
+}
+
+const emojis = args.join(" ").match(/<?(a)?:?(\w{2,32}):(\d{17,19})>?/gi);
+if (!emojis)
+  return message.reply("** ❌ please enter emoji **")
+let emojisArra = []
+emojis.forEach((emote) => {
+  let emoji = Util.parseEmoji(emote);
+  if (emoji.id) {
+    const Link = `https://cdn.discordapp.com/emojis/${emoji.id}.${
+      emoji.animated ? "gif" : "png" 
+    }`;
+    message.guild.emojis.create(`${Link}`, `${emoji.name}`).then((em) => {
+        emojisArra.push(em.toString())
+          if (emojis.length == emojisArra.length) {
+      message.reply(`${emojisArra.map(e => e).join(',')} **Done add emoji**`)
+      emojisArra = []
+  }
+    })
+      .catch((error) => {
+       message.reply("Error : " + error.message);
+        console.log(error);
+    });
+  }
+})
+}
+})  
+
 
 client.on(`ready`, () => {
 
