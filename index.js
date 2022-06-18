@@ -17,7 +17,7 @@ const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, `\\$&`);
 
 //this fires when the BOT STARTS DO NOT TOUCH
 
-```js
+
 client.on("messageCreate", msg => {
     if (msg.content.startsWith("ip")) {
 
