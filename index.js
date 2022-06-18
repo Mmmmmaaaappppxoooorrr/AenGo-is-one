@@ -24,14 +24,28 @@ if(!message.member.hasPermission('BAN_MEMBERS')) return message.channel.send('bb
  
 let Ban = message.mentions.members.first();
 let hokar = args.slice(1).join(" ");
-if(!args[0]) return message.channel.send('tkaya kasek mention bka bo ban krdn')
+if(!args[0]) return message.channel.send('
+```js
+(Command:ban)
+Bans a member
+Usage:
++ban [user] (time m/h/d/mo/y) (reson)
+Examples:
++ban [user]
++ban [user] spamming
++ban [user] 1h spamming
++ban [user] 1d spamming 
++ban [user] 1w 
+```
+')
+
 if(!Ban) return message.channel.send(`${args[0]}      am kasa bwny niya la server`)
 if(!hokar) return message.channel.send('hokarek dyare bka')
  
 if(!Ban.bannable) {
 return message.channel.send('to natwane am kasa ban bkai')
  
-}
+} 
  
 if(Ban.bannable) {
 const embed = new Discord.MessageEmbed()
