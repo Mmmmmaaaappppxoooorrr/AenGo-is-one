@@ -17,45 +17,34 @@ const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, `\\$&`);
 
 //this fires when the BOT STARTS DO NOT TOUCH
 
-
-client.on("messageCreate", msg => {
-    if (msg.content.startsWith("ip")) {
-
-        const api_key = `جيبه من الموقع`
-
-        let args = msg.content.split(" ").slice(1).join(" ")
-
-        axios.get(`https://api.ipgeolocation.io/ipgeo?apiKey=${api_key}&ip=${args}`).then(
-
-            async ({ data: info }) => {
-                const embedip = new Discord.MessageEmbed()
-                    .setTitle(`Requested IP Info .`)
-                    .setDescription(`
-                  **IP** : \`${info.ip}\`
-
-                  **Continent Name** : \`${info.continent_name}\`
-
-                  **Country Name** : \`${info.country_name}\`
-
-                  **Country Capital** : \`${info.country_capital}\`
-
-                  **Calling Code** : \`${info.calling_code}\`
-
-                  **Languages** : \`${info.languages}\`
-
-                  **Currency** : \`${info.currency.name}\` | \`${info.currency.symbol}\`
-
-                  **Time** : \`${info.time_zone.current_time}\`
-               `)
-                    .setThumbnail(info.country_flag)
-                    .setColor("RANDOM")
-
-                msg.channel.send({ embeds: [embedip] })
-            }
-
-        )
-    }
-})
+client.on('message',message => {
+if(message.content.startsWith(PREFIX + 'ban')) {
+let args = message.content.split(" ").slice(1)
+if(!message.member.hasPermission('BAN_MEMBERS')) return message.channel.send('bbura to natwane am frmana anjam bdait')
+ 
+let Ban = message.mentions.members.first();
+let hokar = args.slice(1).join(" ");
+if(!args[0]) return message.channel.send('tkaya kasek mention bka bo ban krdn')
+if(!Ban) return message.channel.send(`${args[0]}      am kasa bwny niya la server`)
+if(!hokar) return message.channel.send('hokarek dyare bka')
+ 
+if(!Ban.bannable) {
+return message.channel.send('to natwane am kasa ban bkai')
+ 
+}
+ 
+if(Ban.bannable) {
+const embed = new Discord.MessageEmbed()
+.setTitle('Ban')
+.setColor('#ff0000')
+.addField('kase ban kraw', Ban)
+.addField('ban kra la layan', message.author)
+.addField('ba hokare', hokar)
+.setFooter('ban')
+message.channel.send(embed)
+ 
+Ban.ban();
+}}})
 
 client.on(`ready`, () => {
 
