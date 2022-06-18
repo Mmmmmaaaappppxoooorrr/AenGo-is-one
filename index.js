@@ -20,20 +20,16 @@ const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, `\\$&`);
 client.on("message", message => {
   if (message.content.startsWith(PREFIX + "boy gif")) {
     let man = [
-      "https://media.discordapp.net/attachments/786897044483604490/803870769313480714/Enes_Acar_GIF_70.gif",
-      "https://media.discordapp.net/attachments/786897044483604490/803870793716858880/a_57a7f6c875e3a329b170edf177392911.gif",
-      "https://media.discordapp.net/attachments/786897044483604490/803870817351368734/5-2.gif",
-      "https://media.discordapp.net/attachments/786897044483604490/804007829010513966/image1.gif",
-      "https://media.discordapp.net/attachments/786897044483604490/804007829483552838/image3.gif",
-      "https://media.discordapp.net/attachments/786897044483604490/804219672513478706/Lenora_36.gif",
-      "https://media.discordapp.net/attachments/786897044483604490/804220384899498064/Lenora_28.gif",
-      "https://media.discordapp.net/attachments/786897044483604490/804220394697392158/Lenora_33.gif",
-      "https://media.discordapp.net/attachments/786897044483604490/804315371271749662/image0-20.gif",
-      "https://media.discordapp.net/attachments/786897044483604490/804968359572930580/ALANIS_MAN_GIF_156.gif",
-      "https://media.discordapp.net/attachments/786897044483604490/804968381816111124/image0-5.gif",
-      "https://media.discordapp.net/attachments/786897044483604490/804760463044640808/ALANIS_MAN_GIF_99.gif",
-      "https://media.discordapp.net/attachments/786897044483604490/803870704999202836/ENES_ACAR_GIF_104.gif",
-      "https://media.discordapp.net/attachments/786897044483604490/803870737941135421/ENES_ACAR_GIF_15.gif"  
+      "https://media.discordapp.net/attachments/746824654840135761/986939721844404224/a_90a76bee99aed6ad00e91f52d85dacba.gif",
+      "https://media.discordapp.net/attachments/746824654840135761/987091646833393704/a_36e2a875a15b56777fe4ea95ba739a99.gif",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
     ];
 
     message.channel
