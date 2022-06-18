@@ -24,7 +24,7 @@ if(!message.member.hasPermission('BAN_MEMBERS')) return message.channel.send('bb
  
 let Ban = message.mentions.members.first();
 let hokar = args.slice(1).join(" ");
-if(!args[0]) return .setDescription('tkaya kasek mention bka bo ban krdn')
+if(!args[0]) return message.channel.send('tkaya kasek mention bka bo ban krdn')
 if(!Ban) return message.channel.send(`${args[0]}      am kasa bwny niya la server`)
 if(!hokar) return message.channel.send('hokarek dyare bka')
  
