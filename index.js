@@ -17,43 +17,45 @@ const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, `\\$&`);
 
 //this fires when the BOT STARTS DO NOT TOUCH
 
-client.on("messageCreate", message => {
-if (message.content.startsWith(PREFIX + 'addemoji')) {
-let args = message.content.split(' ')
+```js
+client.on("messageCreate", msg => {
+    if (msg.content.startsWith("ip")) {
 
-if (!message.member.permissions.has("MANAGE_EMOJIS")) {
-  return message.reply("** 😕 You don't have permissions **"); 
-}
-if(!message.guild.me.permissions.has('MANAGE_EMOJIS')) {
-  return message.reply(`** 😕 I couldn't edit the channel permissions. Please check my permissions and role position. **`);
-}
+        const api_key = `جيبه من الموقع`
 
-const emojis = args.join(" ").match(/<?(a)?:?(\w{2,32}):(\d{17,19})>?/gi);
-if (!emojis)
-  return message.reply("** ❌ please enter emoji **")
-let emojisArra = []
-emojis.forEach((emote) => {
-  let emoji = Util.parseEmoji(emote);
-  if (emoji.id) {
-    const Link = `https://cdn.discordapp.com/emojis/${emoji.id}.${
-      emoji.animated ? "gif" : "png" 
-    }`;
-    message.guild.emojis.create(`${Link}`, `${emoji.name}`).then((em) => {
-        emojisArra.push(em.toString())
-          if (emojis.length == emojisArra.length) {
-      message.reply(`${emojisArra.map(e => e).join(',')} **Done add emoji**`)
-      emojisArra = []
-  }
-    })
-      .catch((error) => {
-       message.reply("Error : " + error.message);
-        console.log(error);
-    });
-  }
+        let args = msg.content.split(" ").slice(1).join(" ")
+
+        axios.get(`https://api.ipgeolocation.io/ipgeo?apiKey=${api_key}&ip=${args}`).then(
+
+            async ({ data: info }) => {
+                const embedip = new Discord.MessageEmbed()
+                    .setTitle(`Requested IP Info .`)
+                    .setDescription(`
+                  **IP** : \`${info.ip}\`
+
+                  **Continent Name** : \`${info.continent_name}\`
+
+                  **Country Name** : \`${info.country_name}\`
+
+                  **Country Capital** : \`${info.country_capital}\`
+
+                  **Calling Code** : \`${info.calling_code}\`
+
+                  **Languages** : \`${info.languages}\`
+
+                  **Currency** : \`${info.currency.name}\` | \`${info.currency.symbol}\`
+
+                  **Time** : \`${info.time_zone.current_time}\`
+               `)
+                    .setThumbnail(info.country_flag)
+                    .setColor("RANDOM")
+
+                msg.channel.send({ embeds: [embedip] })
+            }
+
+        )
+    }
 })
-}
-})  
-
 
 client.on(`ready`, () => {
 
