@@ -18,7 +18,7 @@ const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, `\\$&`);
 //this fires when the BOT STARTS DO NOT 
 
 client.on('message', async abdo => {
-    if (abdo.content.startsWith(PREFIX + "delete channel")) {
+    if (abdo.content.startsWith(PREFIX + "cd")) {
     if (!abdo.member.hasPermission('MANAGE_CHANNELS')) return abdo.channel.send('**تۆ ناتوانی ئەم کردارە بکەیت واز بێرە سەرمان مەیەشێنە 😗**');
      abdo.channel.send('**تـۆ دڵـنـیـای بـۆ سـڕیـنـەوەی ئـەم چـەنـاڵـە تـەنـهـا بـەڕیـاکـشـن جـوابـم دەوە؟**').then(msg => {
        msg.react('✅');
